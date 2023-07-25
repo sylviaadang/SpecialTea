@@ -20,6 +20,10 @@ const ItemSchema = new Schema ({
     ounce: {
         type: Number,
         required: true,
+    },
+    
+    img: {
+        type: String
     }
 }, {timestamps: true})
 
