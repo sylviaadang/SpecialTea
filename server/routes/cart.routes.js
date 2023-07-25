@@ -1,6 +1,6 @@
 const CartController = require('../controllers/cart.controller')
 
-module.exports = app {
+module.exports = app => {
     app.get('/api/cart', CartController.all)
 
     app.get('/api/cart/:id', CartController.one)
