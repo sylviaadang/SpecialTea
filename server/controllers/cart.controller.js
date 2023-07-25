@@ -8,6 +8,12 @@ module.exports = {
             .catch (cart => res.json(err))
     },
 
+    one: (req, res) => {
+        Cart.findOne({_id: req.params.id})
+            .then((cart => res.json(cart)))
+            .catch(err => res.json(err))
+    },
+
     update: (req, res) => {
         Cart.findOneAndUpdate({_id: req.params.id}, {runValidators: true, new: true})
             .then(cart => res.json(cart))
