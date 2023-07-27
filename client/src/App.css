@@ -37,3 +37,35 @@
   height: 80vh;
   width: 100%;
 }
+
+.card-img{
+  height: 20rem;
+}
+
+.one-item-img {
+  height: 40rem;
+  width: 40rem;
+}
+
+.checkout-img {
+  height: 10rem;
+  width: 10rem;
+}
+
+.ms-8 {
+  margin-left: 10%;
+}
+
+.shopping-cart{
+  height: 2rem;
+  width: 2rem;
+}
+
+.checkout-qty {
+  width: 3rem;
+  text-align: center;
+}
+
+.reset {
+  margin: 0;
+}

@@ -1,9 +1,10 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
+import image from '../images/shopping-cart.png'
 
-const NavBar = () => {
+export default props => {
 
-
+    let location = useLocation();
 
 
     return (
@@ -19,15 +20,21 @@ const NavBar = () => {
                         <Link className='me-4 link' to='/'>Login</Link>
                     </div>
                 </div>
-                <div className='d-flex justify-content-center gap-5 mb-4'>
-                    <Link to='/' className='link'>Home</Link>
-                    <Link to='/' className='link'>Lorem</Link>
-                    <Link to='/' className='link'>Ipsum</Link>
-                    <Link to='/' className='link'>Placeholder</Link>
+                <div className='d-flex justify-content-between mb-4'>
+                    <div className='d-flex justify-content-center gap-5 col-10 ms-8'>
+                        <Link to='/' className='link'>Home</Link>
+                        <Link to='/' className='link'>Lorem</Link>
+                        <Link to='/' className='link'>Ipsum</Link>
+                        <Link to='/' className='link'>Placeholder</Link>
+                    </div>
+                    { location.pathname !== "/checkout" ? 
+                    <div className='d-flex justify-content-end me-5'>
+                        <Link to ='/checkout'><img src={image} className='shopping-cart' alt="shopping cart" /></Link>
+                    </div>
+                    : <></>
+                    }
                 </div>
             </div>
         </div>
     )
 }
-
-export default NavBar

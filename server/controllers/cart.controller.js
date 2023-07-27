@@ -13,6 +13,11 @@ module.exports = {
             .then((cart => res.json(cart)))
             .catch(err => res.json(err))
     },
+    new: (req, res) => {
+        Cart.create(req.body)
+            .then(newCart => res.json(newCart))
+            .catch(err => res.status(400).json(err))
+    },
     // This will update cart item
     update: (req, res) => {
         Cart.findOneAndUpdate({_id: req.params.id}, {runValidators: true, new: true})

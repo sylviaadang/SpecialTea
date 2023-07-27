@@ -3,9 +3,12 @@ const mongoose = require('mongoose');
 const CartSchema = new mongoose.Schema({
     items: [{
         name: String,
-        quantity: Number,
-        required: true,
-        default: 1,
+        quantity: {
+            type: Number,
+            required: true,
+            min: [1, 'Cannot have less than 1'],
+            default: 1,
+        } 
     },
     {
         price: Number

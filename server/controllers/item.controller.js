@@ -21,7 +21,7 @@ module.exports = {
     },
 
     updateItem: (req, res) => {
-        Item.update({_id: req.params._id}, req.body, {new: true, runValidators: true})
+        Item.findOneAndUpdate({_id: req.params._id}, req.body, {new: true, runValidators: true})
             .then(item => res.json(item))
             .catch(err => res.status(400).json(err))
     },

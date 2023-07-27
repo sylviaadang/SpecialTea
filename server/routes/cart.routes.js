@@ -5,7 +5,9 @@ module.exports = app => {
 
     app.get('/api/cart/:id', CartController.one)
 
-    app.put('/api/authors/:id', CartController.update)
+    app.post('/api/cart', CartController.new)
+    
+    app.put('/api/cart/:id', CartController.update)
 
-    app.delete('/api/authors/:id', CartController.delete)
+    app.delete('/api/cart/:id', CartController.delete)
 }
