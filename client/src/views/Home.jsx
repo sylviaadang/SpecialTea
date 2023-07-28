@@ -36,7 +36,7 @@ const Home = () => {
                 {items.map((item, key) => {
                     return (
                         <Link to={`/items/${item._id}`}>
-                            <Card style={{width: '20rem', outline: 'none'}} className='m-5 d-flex'>
+                            <Card style={{width: '20rem', outline: 'none'}} className='m-5 d-flex card'>
                                 <Card.Img src={item.img} className='card-img'/>
                                 <Card.Body className='text-center'>
                                     <p>{item.name}</p>

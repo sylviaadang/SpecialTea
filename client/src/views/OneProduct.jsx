@@ -1,22 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import NavBar from '../components/NavBar'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
-import Button from '../components/Button'
+// import Button from '../components/Button'
+import { CartContext } from '../CartContext'
+
 
 const OneProduct = () => {
 
     const {id} = useParams()
     const [item, setItem] = useState({})
-    // const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')))
 
     const navigator = useNavigate()
-
-    // const addToCart = () => {
-    //     // setCart([...cart, item])
-    //     localStorage.setItem("cart", JSON.stringify([...cart, item]))
-    //     navigator('/checkout')
-    // }
 
     const fetchItem = () => {
         axios.get(`http://localhost:8000/api/items/${id}`)
@@ -25,6 +20,10 @@ const OneProduct = () => {
     }
 
     useEffect(fetchItem, [])
+
+    //cart functionality
+    const cart = useContext(CartContext);
+
 
     return (
         <div>
@@ -41,7 +40,8 @@ const OneProduct = () => {
                     </div>
                     <p>TASTE: {item.flavor}</p>
                     <p>{item.description}</p>
-                    <Button item={item}/>
+                    {/* <Button item={item}/> */}
+                    <button onClick={() => cart.addOneToCart(item._id, item.name, item.price)} >Add to Cart</button>
                 </div>
 
             </div>

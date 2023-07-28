@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import NavBar from '../components/NavBar'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import { CartContext } from '../CartContext'
 
-const Checkout = () => {
+const Checkout = (props) => {
 
+    const cart = useContext(CartContext);
+    const id = props.id
+    // const itemQuantity = cart.getItemQuantity(item._id)
     const [cartItems, setCartItems] = useState([])
 
     
@@ -13,6 +17,8 @@ const Checkout = () => {
             .then(res => setCartItems(res.data))
             .catch(err => console.log(err))
     }
+
+    console.log(cart.items)
     
     // const storage = localStorage.getItem("cart")
     // const {obj} = localStorage.getItem("cart")
@@ -31,6 +37,17 @@ const Checkout = () => {
 
     // }
 
+    const itemsCount = cart.items.reduce((sum, item) => sum + item.quantity, 0);
+
+    // function subtotal(){
+    //     const items = cart.items
+    //     let total = 0;
+    //     for (i = 0; i < items.length; i++) {
+    //         total += items.price * items.quantity
+    //     }
+    //     return total;
+    // }
+
     return (
         <div>
             <NavBar/>
@@ -47,17 +64,28 @@ const Checkout = () => {
                 )
             })
         } */}
-            {cartItems.map((item, key) => {
-                return (
-                    <div>  
-                        <p>{item.name}</p>
-                    </div>
-                )
-            })
-
+            <h2 className='text-center'>Cart</h2>
+            {itemsCount > 0 ? 
+                <>
+                {cart.items.map((currentItem, key) => {
+                    return (
+                        <div key={key} className='d-flex gap-5 justify-content-center my-3'>
+                            <p>{currentItem.name}</p>
+                            <p>{currentItem.price}</p>
+                            <form className='d-flex align-items-center'>
+                                <button type='button' className='rounded update-btn mx-2' onClick={() => cart.removeOneFromCart(currentItem._id)}>-</button>
+                                <p>{currentItem.quantity}</p>
+                                <button type='button' className='rounded update-btn mx-2' onClick={() => cart.addOneToCart(currentItem._id)}>+</button>
+                            </form>
+                            <button type='button' className='remove link' onClick={() => cart.deleteFromCart(currentItem._id)}>Remove</button>
+                        </div>
+                    )
+                })}
+                </>
+                :
+                <p className='text-center'>No items in cart</p>
             }
-
-
+            <h4 className='text-center m-5'>Subtotal: ${(cart.items.reduce((total, item) => total+(item.price*item.quantity), 0)).toFixed(2)}</h4>
         </div>
     )
 }

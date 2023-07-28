@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import OneProduct from './views/OneProduct';
 import Checkout from './views/Checkout';
+import CartProvider from './CartContext';
 
 
 function App() {
@@ -15,13 +16,15 @@ function App() {
 
 
   return (
-    <div className="App">
-      <Routes>
-        <Route path='/' element={<Home/>}></Route>
-        <Route path='/items/:id' element={<OneProduct/>}></Route>
-        <Route path='/checkout' element={<Checkout/>}></Route>
-      </Routes>
-    </div>
+    <CartProvider>
+      <div className="App">
+        <Routes>
+          <Route path='/' element={<Home/>}></Route>
+          <Route path='/items/:id' element={<OneProduct/>}></Route>
+          <Route path='/checkout' element={<Checkout/>}></Route>
+        </Routes>
+      </div>
+    </CartProvider>
   );
 }
 

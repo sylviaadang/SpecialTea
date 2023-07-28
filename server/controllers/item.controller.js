@@ -4,7 +4,13 @@ module.exports = {
 
     allItems: (req, res) => {
         Item.find()
-            .then(item => res.json(item))
+            .then(items => res.json(items))
+            .catch(err => res.json(err))
+    },
+
+    allCartItems: (req,res) => {
+        Item.find({inCart: true})
+            .then(items => res.json(items))
             .catch(err => res.json(err))
     },
 

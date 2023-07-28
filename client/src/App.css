@@ -13,6 +13,7 @@
   text-decoration: underline;
 } */
 
+
 .link:after {
   content: '';
   position: absolute;
@@ -38,9 +39,20 @@
   width: 100%;
 }
 
-.card-img{
+/* .card {
+  overflow: hidden;
+} */
+
+.card-img {
   height: 20rem;
+  /* transition: 0.5s all ease-in-out;
+  overflow: hidden; */
 }
+
+/* .card-img:hover {
+  height: 20rem;
+  transform: scale(1.1)
+} */
 
 .one-item-img {
   height: 40rem;
@@ -66,6 +78,21 @@
   text-align: center;
 }
 
-.reset {
+p {
   margin: 0;
+}
+
+.remove {
+  background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+.update-btn {
+  width: 1.5rem;
+  height: 1.5rem;
 }
