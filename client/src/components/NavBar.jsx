@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import image from '../images/shopping-cart.png'
 
 export default props => {
-
+    // Used for if in checkout page it wont show the shopping cart in line 30 - 32
     let location = useLocation();
 
 
@@ -27,7 +27,7 @@ export default props => {
                         <Link to='/' className='link'>Ipsum</Link>
                         <Link to='/' className='link'>Placeholder</Link>
                     </div>
-                    { location.pathname !== "/checkout" ? 
+                    { location.pathname !== "/checkout" ?
                     <div className='d-flex justify-content-end me-5'>
                         <Link to ='/checkout'><img src={image} className='shopping-cart' alt="shopping cart" /></Link>
                     </div>
