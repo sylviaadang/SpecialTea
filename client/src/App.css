@@ -96,3 +96,12 @@ p {
   width: 1.5rem;
   height: 1.5rem;
 }
+
+.page {
+  position: relative;
+}
+
+/* navbar {
+  background-color: white;
+} */
+

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import NavBar from '../components/NavBar'
+import PayButton from '../components/PayButton'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { CartContext } from '../CartContext'
@@ -64,14 +65,14 @@ const Checkout = (props) => {
                 )
             })
         } */}
-            <h2 className='text-center'>Cart</h2>
+            <h2 className='text-center mt-5'>Shopping Cart</h2>
             {itemsCount > 0 ? 
                 <>
                 {cart.items.map((currentItem, key) => {
                     return (
                         <div key={key} className='d-flex gap-5 justify-content-center my-3'>
                             <p>{currentItem.name}</p>
-                            <p>{currentItem.price}</p>
+                            <p>${currentItem.price}</p>
                             <form className='d-flex align-items-center'>
                                 <button type='button' className='rounded update-btn mx-2' onClick={() => cart.removeOneFromCart(currentItem._id)}>-</button>
                                 <p>{currentItem.quantity}</p>
@@ -83,9 +84,12 @@ const Checkout = (props) => {
                 })}
                 </>
                 :
-                <p className='text-center'>No items in cart</p>
+                <p className='text-center mt-5'>No items in cart</p>
             }
             <h4 className='text-center m-5'>Subtotal: ${(cart.items.reduce((total, item) => total+(item.price*item.quantity), 0)).toFixed(2)}</h4>
+            <div>
+                <PayButton/>
+            </div>
         </div>
     )
 }
