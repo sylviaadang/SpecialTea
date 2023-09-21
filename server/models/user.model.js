@@ -18,7 +18,7 @@ const UserSchema = new mongoose.Schema({
     password: {
         type: String,
         required: [true, 'Please enter a valid password'],
-        minlength: [6, 'Password must be at least 6 characters']
+        minlength: [8, 'Password must be at least 6 characters']
     },
     created_at: {
         type: Date,
