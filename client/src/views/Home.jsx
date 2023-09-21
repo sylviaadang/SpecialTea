@@ -23,7 +23,7 @@ const Home = () => {
     useEffect(fetchItems, [])
 
     return (
-        <div>
+        <div className='page'>
             <NavBar/>
             <div className='hero-bg mb-4'>
                 <h2>Test</h2>
