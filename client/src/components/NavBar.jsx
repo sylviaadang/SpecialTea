@@ -4,7 +4,7 @@ import image from '../images/shopping-cart.png'
 import { CartContext } from '../CartContext'
 
 export default props => {
-
+    // Used for if in checkout page it wont show the shopping cart in line 30 - 32
     const cart = useContext(CartContext);
 
     let location = useLocation();
